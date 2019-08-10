@@ -4,10 +4,16 @@ namespace FindSubstring
 {
     class Program
     {
-        public static List<char> subCharArr = new List<char>();
         public static void Main()
         {
-            char[] mainString = Console.ReadLine().ToCharArray();
+            string userInput = Console.ReadLine();
+            Console.WriteLine(GetSubstring(userInput));
+            Console.ReadLine();
+        }
+        public static string GetSubstring(string fullString)
+        {
+            char[] mainString = fullString.ToLower().ToCharArray();
+            List<char> subCharArr = new List<char>();
             subCharArr.Add(mainString[0]);
             bool identifier = false;
             foreach (var mainChar in mainString)
@@ -26,9 +32,7 @@ namespace FindSubstring
                 }
                 identifier = false;
             }
-            string subString = new string(subCharArr.ToArray());
-            Console.WriteLine(subString);
-            Console.ReadLine();
+            return new string(subCharArr.ToArray());
         }
     }
 }
