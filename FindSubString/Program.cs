@@ -17,6 +17,7 @@ namespace FindSubstring
                     if (subChar == mainChar)
                     {
                         identifier = true;
+                        break;
                     }
                 }
                 if (identifier != true)
