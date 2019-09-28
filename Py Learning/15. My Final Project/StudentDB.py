@@ -1,4 +1,5 @@
 import sqlite3
+import os
 
 
 db = sqlite3.connect('studentDB.db')
@@ -98,6 +99,7 @@ def Delete():
     db.commit()
     print('Student Removed from the database successfully.\n')
 
+
 def PrintMenu():
     print('Menu')
     print('1. Lookup the full Database')
@@ -107,30 +109,18 @@ def PrintMenu():
     print('5. Delete students to the database')
     print('6. Exit\n')
 
+
 def main():
     closeTheApp = ''
     while closeTheApp != 'exit()':
         PrintMenu()
+        MenuDict = {1: Lookup, 2: SingleLookup, 3: Update,
+                    4: Create, 5: Delete}
         try:
             print('Enter a choice:', end=' ')
             menuItem = int(input())
             print()
-
-            if menuItem == 1:  # Lookup the full Database
-                Lookup()
-            elif menuItem == 2:  # Lookup a student's information
-                SingleLookup()
-            elif menuItem == 3:  # Update a student\' information
-                Update()
-            elif menuItem == 4:  # Add students to the database
-                Create()
-            elif menuItem == 5:  # Delete students to the database
-                Delete()
-            elif menuItem == 6:  # Exit sequence
-                closeTheApp = 'exit()'
-            else:
-                inValInput()
-                closeTheApp = input()
+            closeTheApp = 'exit()' if menuItem is 6 else MenuDict[menuItem]()
         except:
             inValInput()
             closeTheApp = input()
