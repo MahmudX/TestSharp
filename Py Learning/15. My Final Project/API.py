@@ -3,7 +3,8 @@ import json
 import textwrap
 
 city = 'london'
-apiLink = f'https://samples.openweathermap.org/data/2.5/weather?q={city},uk&appid=b6907d289e10d714a6e88b30761fae22'
+country = 'uk'
+apiLink = f'https://samples.openweathermap.org/data/2.5/weather?q={city},{country}&appid=b6907d289e10d714a6e88b30761fae22'
 with urllib.request.urlopen(apiLink) as f:
     text = f.read()
     decodedText = text.decode('UTF-8')
