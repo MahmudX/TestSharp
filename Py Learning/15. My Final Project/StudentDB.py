@@ -1,5 +1,4 @@
 import sqlite3
-import os
 
 
 db = sqlite3.connect('studentDB.db')
